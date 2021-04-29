@@ -40,6 +40,10 @@ make
 cd ..
 
 # download other files in the artifact (logs, tutorial)
+git init
+git remote add origin https://github.com/marcoeilers/cav2021-artifact.git
+git fetch origin
+git checkout -b main --track origin/main
 
 # download and compile viper
 mkdir viper
