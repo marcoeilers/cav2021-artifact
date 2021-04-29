@@ -1,0 +1,31 @@
+// Example from "Secure Information Flow as a Safety Problem", Figure 4
+// T. Terauchi and A. Aiken
+// SAS 2005
+
+method main(n: Int, k: Int) returns (l: Int)
+    requires n >= 0
+    requires low(n)
+    requires low(k)
+    ensures low(l)
+{
+    var c: Int := n
+    var f1: Int
+    var f2: Int
+    f1 := 1
+    f2 := 0
+    while (c > 0)
+        // loop computes fib(n)
+        // no functional specifications needed
+        invariant low(c) && low(f1) && low(f2)
+    {
+        f1 := f1 + f2
+        f2 := f1 - f2
+        c := c - 1
+    }
+    if (f1 > k) {
+        l:=1
+    }else{
+        l := 0
+    }
+}
+

@@ -1,0 +1,42 @@
+// Main example from the paper, Fig. 1
+
+method is_female(person: Int)
+        returns (res: Int)
+    // Level of result depends on level of input
+    // Only the level of the first bit of person matters
+    ensures low(person % 2) ==> low(res)
+{
+  var gender: Int := person % 2 // gender encoded in first bit
+  if (gender == 0) {
+    res := 1
+  }else{
+    res := 0
+  }
+}
+
+method main(people: Seq[Int])
+       returns (count: Int)
+    requires low(|people|)
+    // The first bit of all entries is low
+    requires forall j: Int :: j >= 0 && j < |people| ==> low(people[j] % 2)
+    // The resulting count is low
+    ensures low(count)
+{
+  var i: Int := 0
+  count := 0
+  while (i < |people|)
+    // Loop invariant contains only safety info (range of i)
+    invariant i >= 0 && i <= |people|
+    // and relational information about i and count, no functional spec.
+    invariant low(i)
+    invariant low(count)
+  {
+    var current: Int := people[i]
+    var female : Int
+    female := is_female(current)
+    // female is now known to be low
+    count := count + female
+    i := i + 1
+  }
+}
+

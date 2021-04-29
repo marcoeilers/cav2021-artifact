@@ -1,0 +1,38 @@
+// Example from "A new algorithm for low-deterministic security"
+// D. Giffhorn and G. Snelting
+// International Journal of Information Security, 2015
+// Figure 1, top left
+
+method inputPIN() returns (res: Int)
+method print(val: Int)
+    requires low(val)
+    requires lowEvent
+
+method main()
+    requires lowEvent
+{
+    var x: Int
+    x := inputPIN()
+    if (x < 1234) {
+        print(0) // Fails to verify; observable event under high condition
+    }
+    var y: Int := x
+    print(y) // Fails to verify, value is high
+}
+
+
+// Valid version with declassification
+method main_fixed()
+    requires lowEvent
+{
+    var x: Int
+    x := inputPIN()
+    declassify x < 1234
+    if (x < 1234) {
+        print(0) // now okay
+    }
+    var y: Int := x
+    declassify x
+    print(y) // now okay
+}
+

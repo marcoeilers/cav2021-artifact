@@ -1,0 +1,67 @@
++ cd /home/artifact/secc
++ ./SecC.sh examples/case-studies/cav2019.c
+examples/case-studies/cav2019.c
+  thread1 ...   success ❤ (time 369ms)
+  thread2 ...   success ❤ (time 79ms)
+  thread1_insecure ...   caught insecure ♡
+  thread2_insecure ...   caught insecure ♡
+
+real	0m1.394s
+user	0m0.908s
+sys	0m0.047s
++ ./SecC.sh examples/case-studies/cddc.c
+examples/case-studies/cddc.c
+  driver ...   success ❤ (time 562ms)
+  input_switch ...   success ❤ (time 13671ms)
+
+real	0m15.074s
+user	0m6.911s
+sys	0m2.160s
++ ./SecC.sh examples/case-studies/ct.c
+examples/case-studies/ct.c
+  ar_zero_nil ...   success ❤ (time 205ms)
+  ar_nonzero_cons ...   success ❤ (time 126ms)
+  and_lemma ...   success ❤ (time 26ms)
+  or_lemma ...   success ❤ (time 17ms)
+  abs_choose_def2 ...   success ❤ (time 52ms)
+  abs_choose_eq ...   success ❤ (time 19ms)
+  max_abs_choose ...   success ❤ (time 42ms)
+  min_abs_choose ...   success ❤ (time 44ms)
+  choose_ct ...   success ❤ (time 50ms)
+  not ...   success ❤ (time 8ms)
+  max_ct ...   success ❤ (time 54ms)
+  min_ct ...   success ❤ (time 63ms)
+  memcmp_ct ...   success ❤ (time 318ms)
+  max_is_abs_max ...   success ❤ (time 52ms)
+  max_list ...   success ❤ (time 241ms)
+  password_checker ...   success ❤ (time 60ms)
+
+real	0m2.266s
+user	0m1.505s
+sys	0m0.098s
++ ./SecC.sh examples/case-studies/db.c
+examples/case-studies/db.c
+  ar_sec_snoc ...   success ❤ (time 446ms)
+  ar_sec_join ...   success ❤ (time 127ms)
+  lookup ...   success ❤ (time 564ms)
+  split ...   success ❤ (time 124ms)
+  expose ...   success ❤ (time 193ms)
+  cover ...   success ❤ (time 192ms)
+  binsearch ...   success ❤ (time 617ms)
+  sum_all ...   success ❤ (time 231ms)
+  sum_all_rec ...   success ❤ (time 111ms)
+  remove_all ...   success ❤ (time 121ms)
+
+real	0m3.664s
+user	0m2.666s
+sys	0m0.135s
++ ./SecC.sh examples/case-studies/encrypt.c
+examples/case-studies/encrypt.c
+  encrypt ...   success ❤ (time 266ms)
+  decrypt ...   success ❤ (time 81ms)
+  secure ...   success ❤ (time 435ms)
+
+real	0m1.613s
+user	0m1.101s
+sys	0m0.064s
+

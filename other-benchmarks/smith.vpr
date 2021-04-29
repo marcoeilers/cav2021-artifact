@@ -1,0 +1,53 @@
+// Example from "Principles of Secure Information Flow Analysis"
+// G. Smith
+// Malware Detection, 2007
+
+method main(a_in: Seq[Int], secret: Int) returns (leak: Int)
+    requires secret >= 0 && secret < |a_in|
+    requires low(a_in) && forall i: Int ::  i >= 0 && i < |a_in| ==> a_in[i] == 0
+    ensures low(leak)
+{
+    var a : Seq[Int] := a_in
+    // secret is leaked by changing a at a secret index
+    a := a[secret := 1]
+    var i: Int
+    i := 0
+    leak := 0
+    while (i < |a|)
+        invariant i >= 0 && i <= |a|
+        // invariant states all entries are low (fails to verify)
+        invariant forall j: Int :: j >= 0 && j < |a| ==> low(a[j]) 
+		// without the previous invariant, this one fails to verify
+        invariant low(leak) && low(i)
+    {
+        if (a[i] == 1) {
+            leak := i
+        }
+        i := i + 1
+    }
+}
+
+// legal version with declassification
+method main_fixed(a_in: Seq[Int], secret: Int) returns (leak: Int)
+    requires secret >= 0 && secret < |a_in|
+    requires low(|a_in|) && forall i: Int ::  i >= 0 && i < |a_in| ==> a_in[i] == 0
+    ensures low(leak)
+{
+    var a : Seq[Int] := a_in
+    a := a[secret := 1]
+    declassify secret
+    var i: Int
+    i := 0
+    leak := 0
+    while (i < |a|)
+        invariant i >= 0 && i <= |a|
+        invariant forall j: Int :: j >= 0 && j < |a| ==> low(a[j])
+        invariant low(i) && low(leak)
+    {
+        if (a[i] == 1) {
+            leak := i
+        }
+        i := i + 1
+    }
+}
+

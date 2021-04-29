@@ -1,0 +1,97 @@
+// Example from "Secure Information Flow and Pointer Confinement in a Java-like Language"
+// A. Banerjee and D. A. Naumann
+// CSFW 2002
+
+// Patient class has two fields name and HIV,
+// HIV status is high, name is low
+field name: Ref
+field hiv: Ref
+
+method main()
+    requires lowEvent
+{
+    // Two string variables
+    var lbuf: Ref
+    var hbuf: Ref
+    lbuf := null
+    hbuf := null
+    var lp: Ref
+    var newPatient: Ref
+    // result of readFile is low
+    lp := readFile()
+    newPatient := new(name, hiv)
+    lbuf := getName(lp)
+    hbuf := getName(lp)
+    setName(newPatient, lbuf)
+	// reasult of readFromTrustedChan is high
+    hbuf := readFromTrustedChan()
+    // HIV info of newPatient is set to high value
+    setHIV(newPatient, hbuf)
+    var tmpHiv: Ref
+    tmpHiv := getHiv(newPatient)
+    setName(lp, tmpHiv) // Not allowed
+}
+
+method getName(this: Ref) returns (res: Ref)
+    requires acc(this.name, 1/4)
+    ensures acc(this.name, 1/4)
+    ensures res == this.name
+{
+    res := this.name
+}
+
+method setName(this: Ref, n: Ref)
+    requires acc(this.name)
+    requires low(n)
+    ensures acc(this.name)
+    ensures low(this.name)
+{
+    this.name := n
+}
+
+method getHiv(this: Ref) returns (res: Ref)
+    requires acc(this.hiv, 1/4)
+    ensures acc(this.hiv, 1/4)
+    ensures res == this.hiv
+{
+    res := this.hiv
+}
+
+method setHIV(this: Ref, s: Ref)
+    requires acc(this.hiv)
+    ensures acc(this.hiv)
+{
+    this.hiv := s
+}
+
+method readFile() returns (res: Ref)
+    ensures low(res)
+    ensures acc(res.name)
+    ensures low(res.name)
+	
+method readFromTrustedChan() returns (res: Ref)
+    // result is high
+
+// legal version with declassification
+method main_fixed()
+    requires lowEvent
+{
+    var lbuf: Ref
+    var hbuf: Ref
+    lbuf := null
+    hbuf := null
+    var lp: Ref
+    var xp: Ref
+    lp := readFile()
+    xp := new(name, hiv)
+    lbuf := getName(lp)
+    hbuf := getName(lp)
+    setName(xp, lbuf)
+    hbuf := readFromTrustedChan()
+    setHIV(xp, hbuf)
+    var tmpHiv: Ref
+    tmpHiv := getHiv(xp)
+    declassify tmpHiv
+    setName(lp, tmpHiv)
+}
+

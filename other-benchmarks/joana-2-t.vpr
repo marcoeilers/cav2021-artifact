@@ -1,0 +1,24 @@
+// Example from "A new algorithm for low-deterministic security"
+// D. Giffhorn and G. Snelting
+// International Journal of Information Security, 2015
+// Figure 2, top
+
+method print(val: Int)
+    requires low(val)
+    requires lowEvent
+
+method main(h: Int)
+    requires lowEvent
+{
+    var l: Int
+    // Assignments under a high guard
+    if (h == l) {
+        l := 42
+    }else{
+        l := 17
+    }
+    // Earlier assignments have no effect on result
+    l := 0
+    print(l)
+}
+

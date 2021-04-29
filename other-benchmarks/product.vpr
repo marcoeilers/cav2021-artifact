@@ -1,0 +1,106 @@
+// Example from "Relational Verification using Product Programs"
+// G. Barthe, J. M. Crespo, and C. Kunz
+// FM 2011
+// Originally from "Privacy-Sensitive Information Flow with JML"
+// Dufay, G., Felty, A., & Matwin, S.
+// International Conference on Automated Deduction 2005
+
+// class Payroll {
+//   public int PID;
+//   public int Salary;
+//   public boolean JoinInd;
+// };
+field joinInd: Bool
+field PID: Int
+field salary: Int
+
+// class Employee {
+//   public int EID;
+// }
+field EID: Int
+
+// class Combined {
+//   public Payroll m_payroll;
+//   public Employee m_employee;
+// }
+field payroll: Ref
+field employee: Ref
+
+// Note that we do not inline the definition of checkJoinAndFindEmployee, 
+// unlike the product program paper.
+method checkJoinAndFindEmployee(psi: Ref, es: Seq[Ref]) returns (res: Ref)
+    // Pre- and postconditions only mention safety (permissions) 
+    // and relational information (which fields are low)
+    requires low(es)
+    // joinInd, PID and EID are low
+    requires acc(psi.joinInd, 1/4) && low(psi.joinInd)
+    requires acc(psi.PID, 1/4) && low(psi.PID)
+    requires forall e: Ref :: e in es ==> acc(e.EID, 1/4) && low(e.EID)
+    ensures acc(psi.PID, 1/4)
+    ensures acc(psi.joinInd, 1/4)
+    ensures forall e: Ref :: e in es ==> acc(e.EID, 1/4)
+    // result is low
+    ensures low(res)
+{
+    res := null
+    if (psi.joinInd){
+        var j: Int
+        j := 0
+        while (j < |es|)
+            // Relational loop invariant without functional information
+            invariant acc(psi.PID, 1/8) && low(psi.PID)
+            invariant j >= 0 && j <= |es| && low(j)
+            invariant forall e: Ref :: e in es ==> acc(e.EID, 1/8) && low(e.EID)
+            invariant low(res)
+        {
+            if (psi.PID == es[j].EID) {
+                // New object created by both executions is defined to be low
+                res := new(employee, payroll)
+                res.employee := es[j]
+                res.payroll := psi
+
+            }
+            j := j + 1
+        }
+    }
+}
+
+method joinSalaries(ps: Seq[Ref], es: Seq[Ref]) returns (tab: Seq[Ref])
+    requires low(es)
+    requires low(|ps|)
+    // joinInd and PID are low
+    requires forall i: Int :: ((i >= 0 && i < |ps|) ==> acc(ps[i].joinInd) && low(ps[i].joinInd))
+    requires forall i: Int :: ((i >= 0 && i < |ps|) ==> acc(ps[i].PID) && low(ps[i].PID))
+	requires forall i: Int :: ((i >= 0 && i < |ps|) ==> acc(ps[i].salary))
+    // salary is low if joinInd is true
+    requires forall i: Int :: ((i >= 0 && i < |ps|) ==> (ps[i].joinInd ==> low(ps[i].salary)))
+    // EID is low
+    requires forall k: Int :: k >= 0 && k < |es| ==> acc(es[k].EID) && low(es[k].EID)
+    ensures |ps|  == |tab|
+    ensures forall i: Int :: ((i >= 0 && i < |ps|) ==> acc(ps[i].joinInd) && acc(ps[i].salary))
+    ensures forall i: Int :: ((i >= 0 && i < |ps|) ==> (ps[i].joinInd ==> low(tab[i])))
+    ensures forall e: Ref :: e in es ==> acc(e.EID)
+{
+    tab := Seq[Ref]()
+    var i: Int := 0
+    while (i < |ps|)
+        // Relational loop invariant
+        invariant i >= 0 && i <= |ps| && low(i)
+        invariant forall j: Int ::  ((j >= 0 && j < |ps|) ==> acc(ps[j].joinInd, 1/2) && low(ps[j].joinInd))
+        invariant forall j: Int ::  ((j >= 0 && j < |ps|) ==> acc(ps[j].PID, 1/2) && low(ps[j].PID))
+        invariant forall e: Ref :: e in es ==> acc(e.EID, 1/2) && low(e.EID)
+        invariant |tab| == i
+        invariant forall k: Int :: ((k >= 0 && k < i) ==> (ps[k].joinInd ==> low(tab[k])))
+    {
+        if (ps[i] != null) {
+            var current: Ref
+            current := checkJoinAndFindEmployee(ps[i], es)
+			// assume postcondition that result is low
+            tab := tab ++ Seq(current)
+        }else{
+            tab := tab ++ Seq(null)
+        }
+        i := i + 1
+    }
+}
+

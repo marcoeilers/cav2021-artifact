@@ -1,0 +1,33 @@
+// Termination example, Fig. 8 (left)
+
+method main(h: Int)
+    requires lowEvent
+{
+    var x : Int := h
+    // Loop terminates iff h >= 0, leaks info about h
+    while (x != 0) // Fails to verify because termination condition is high
+        terminates h >= 0 with x
+        // Loop invariants for showing that the termination conditon is exact
+        invariant x <= h
+        invariant h >= 0  ==> x >= 0
+    {
+        x := x - 1
+    }
+}
+
+
+// Valid version with declassification
+method main_fixed(h: Int)
+    requires lowEvent
+{
+    var x : Int := h
+    declassify x
+    while (x != 0)
+        terminates h >= 0 with x
+        invariant x <= h
+        invariant h >= 0  ==> x >= 0
+    {
+        x := x - 1
+    }
+}
+

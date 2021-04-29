@@ -1,0 +1,22 @@
+// Example from "Secure Information Flow as a Safety Problem", Figure 1
+// T. Terauchi and A. Aiken
+// SAS 2005
+
+method main(h: Bool, y: Int) returns (l: Int)
+    requires low(y)
+    ensures low(l)
+{
+    var z: Int
+    var x: Int
+    z := 1
+    // The conditional is legal because both
+    // assignments are equivalent; semantic 
+    // reasoning is required.
+    if (h) {
+        x := 1
+    }else{
+        x:= z
+    }
+    l := x + y
+}
+

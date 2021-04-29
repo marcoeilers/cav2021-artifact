@@ -1,0 +1,26 @@
+// Declassification example, Fig. 6
+
+method check(password: Seq[Int], input: Seq[Int])
+    returns (res: Bool)
+    // password is high
+    requires low(input)
+    // result depends on password, but should be treated as low
+    ensures low(res)
+{
+    res := |password| == |input|
+    // Declassify if the input and result are equal to fulfill the postcondition.
+    declassify password == input
+    var i: Int := 0
+    if (res){
+        while(i < |password|)
+            invariant i >= 0 && i <= |password|
+            invariant res == password[..i] == input[..i]
+            invariant low(i)
+        {
+            res := res && password[i] == input[i]
+            i := i + 1
+        }
+    }
+
+}
+

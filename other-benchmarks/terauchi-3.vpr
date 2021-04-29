@@ -1,0 +1,29 @@
+// Example from "Secure Information Flow as a Safety Problem", Figure 2
+// T. Terauchi and A. Aiken
+// SAS 2005
+
+function hashfunc(i: Int): Int
+
+method main(secret: Int, hash: Int, input: Int) returns (l: Int)
+    requires low(input)
+    ensures low(l) // fails because of illegal flow
+{
+    l := 0
+
+    if (hashfunc(input) == hash) {
+        l := secret
+    }
+}
+
+// legal version with declassification
+method main_fixed(secret: Int, hash: Int, input: Int) returns (l: Int)
+    requires low(input)
+    ensures low(l)
+{
+    l := 0
+    declassify hashfunc(input) == hash ? secret : 0
+    if (hashfunc(input) == hash) {
+        l := secret
+    }
+}
+

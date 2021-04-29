@@ -1,0 +1,80 @@
+<p>Nagini is an automatic verifier for statically typed Python programs, based on the <a href="http://viper.ethz.ch">Viper</a> verification infrastructure. Nagini is being developed at the <a href="http://www.pm.inf.ethz.ch/">Chair of Programming Methodology</a> at ETH Zurich as part of the <a href="http://www.pm.inf.ethz.ch/research/verifiedscion.html">VerifiedSCION</a> project.</p>
+<p>Our CAV 2018 tool paper describing Nagini can be found <a href="http://pm.inf.ethz.ch/publications/getpdf.php?bibname=Own&amp;id=EilersMueller18.pdf">here</a>. See <a href="https://github.com/marcoeilers/nagini/wiki">the Wiki</a> for the documentation of Nagini's specification language.</p>
+<p>You can try a (rather slow) online version of Nagini <a href="http://viper.ethz.ch/nagini-examples/">on this website</a>.</p>
+<p>For use with the PyCharm IDE, try the <a href="https://github.com/marcoeilers/nagini-pycharm">Nagini PyCharm plugin</a>.</p>
+<h1 id="dependencies-ubuntu-linux">Dependencies (Ubuntu Linux)</h1>
+<p>Install Java 11 or newer (64 bit) and Python 3.7 or newer (64 bit) and the required libraries:</p>
+<pre><code>sudo apt-get install python3-dev</code></pre>
+<p>For usage with Viper's verification condition generation backend Carbon, you will also need to install Boogie.</p>
+<h1 id="dependencies-windows">Dependencies (Windows)</h1>
+<ol style="list-style-type: decimal">
+<li>Install Java 11 or newer (64 bit) and Python 3.7 or newer (64 bit).</li>
+<li>Install either Visual C++ Build Tools 2015 (<a href="http://go.microsoft.com/fwlink/?LinkId=691126">http://go.microsoft.com/fwlink/?LinkId=691126</a>) or Visual Studio 2015. For the latter, make sure to choose the option &quot;Common Tools for Visual C++ 2015&quot; in the setup (see <a href="https://blogs.msdn.microsoft.com/vcblog/2015/07/24/setup-changes-in-visual-studio-2015-affecting-c-developers/">https://blogs.msdn.microsoft.com/vcblog/2015/07/24/setup-changes-in-visual-studio-2015-affecting-c-developers/</a> for an explanation).</li>
+</ol>
+<h1 id="getting-started">Getting Started</h1>
+<ol style="list-style-type: decimal">
+<li><p>Create a virtual environment:</p>
+<pre><code>virtualenv --python=python3 &lt;env&gt;</code></pre></li>
+<li><p>Activate it:</p>
+<pre><code>source env/bin/activate</code></pre></li>
+<li><p>Install Nagini:</p>
+<pre><code>pip install nagini</code></pre>
+<p>Alternatively, to get the most up-to-date version, install from source; this will require manually getting and compiling Viper (most likely the most recent development version):</p>
+<pre><code>git clone https://github.com/marcoeilers/nagini.git
+cd nagini
+pip install .</code></pre></li>
+</ol>
+<h1 id="command-line-usage">Command Line Usage</h1>
+<p>To verify a specific file from the nagini directory, run:</p>
+<pre><code>nagini [OPTIONS] path-to-file.py</code></pre>
+<p>The following command line options are available:</p>
+<pre><code>--verifier      
+                Selects the Viper backend to use for verification.
+                Possible options are &#39;silicon&#39; (for Symbolic Execution) and &#39;carbon&#39; 
+                (for Verification Condition Generation based on Boogie).  
+                Default: &#39;silicon&#39;.
+
+--select        
+                Select which functions/methods/classes to verify. Expects a comma-
+                separated list of names.
+
+--counterexample        
+                Enable outputting counterexamples for verification errors (experimental).
+
+--sif=v         
+                Enable verification of secure information flow. v can be true for ordinary 
+                non-interference (for sequential programs only), poss for possiblistic 
+                non-intererence (for concurrent programs) or prob for probabilisitc non-
+                interference (for concurrent programs).
+                Requires silver-sif-extension to be on the classpath, and silicon-sif-
+                extension when used with counterexamples.
+
+--z3           
+                Sets the path of the Z3 executable. Alternatively, the
+                &#39;Z3_EXE&#39; environment variable can be set.
+
+--boogie        
+                Sets the path of the Boogie executable. Required if the Carbon backend
+                is selected. Alternatively, the &#39;BOOGIE_EXE&#39; environment variable can be
+                set.
+
+--viper-jar-path    
+                Sets the path to the required Viper binaries (&#39;silicon.jar&#39; or
+                &#39;carbon.jar&#39;). Only the binary for the selected backend is
+                required. You can either use the provided binary packages installed
+                by default or compile your own from source (see below).
+                Expects either a single path or a colon- (Unix) or semicolon-
+                (Windows) separated list of paths. Alternatively, the environment
+                variables &#39;SILICONJAR&#39;, &#39;CARBONJAR&#39; or &#39;VIPERJAR&#39; can be set.</code></pre>
+<p>To see all possible command line options, invoke <code>nagini</code> without arguments.</p>
+<h1 id="alternative-viper-versions">Alternative Viper Versions</h1>
+<p>To use a more recent or custom version of the Viper infrastructure, follow the <a href="https://github.com/viperproject/documentation/wiki">instructions here</a>. Look for <code>sbt assembly</code> to find instructions for packaging the required JAR files. Use the parameters mentioned above to instruct Nagini to use your custom Viper version.</p>
+<h1 id="troubleshooting">Troubleshooting</h1>
+<ol style="list-style-type: decimal">
+<li><p>On Windows: During the setup, you get an error like <code>Microsoft Visual C++ 14.0 is required.</code> or <code>Unable to fnd vcvarsall.bat</code>:</p>
+<p>Python cannot find the required Visual Studio 2015 C++ installation, make sure you have either installed the Build Tools or checked the &quot;Common Tools&quot; option in your regular VS 2015 installation (see above).</p></li>
+<li><p>While verifying a file, you get a stack trace ending with something like <code>No matching overloads found</code>:</p>
+<p>The version of Viper you're using does not match your version of Nagini. Try updating both to the newest version.</p></li>
+</ol>
+<h1 id="build-status">Build Status</h1>
+<p><a href="https://pmbuilds.inf.ethz.ch/job/nagini"><img src="https://pmbuilds.inf.ethz.ch/buildStatus/icon?job=nagini&amp;style=plastic" alt="Build Status" /></a></p>

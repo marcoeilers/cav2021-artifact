@@ -1,0 +1,52 @@
+// Example from "A Theorem Proving Approach to Analysis of Secure Information Flow"
+// Darvas, Adam and Haehnle, Reiner and Sands, David
+// Security in Pervasive Computing, 2005
+
+
+// class Account {
+//   private int balance;
+//   public boolean extraService;
+//   private void writeBalance(int amount) {
+//     if (amount >= 10000) extraService = true; else extraService = false;
+//     balance = amount; }
+// }
+field balance: Int
+field extraService: Bool
+
+
+method writeBalance(this: Ref, amount: Int)
+    // amount is high
+    requires acc(this.extraService)
+    requires acc(this.balance)
+    requires low(this.extraService)
+    ensures acc(this.extraService)
+    ensures acc(this.balance)
+    ensures low(this.extraService)  // Not fulfilled, depends on amount
+{
+    if (amount >= 10000) {
+        this.extraService := true
+    }else{
+        this.extraService := false
+    }
+    this.balance := amount
+}
+
+// legal version with declassification
+method writeBalance_fixed(this: Ref, amount: Int)
+    requires acc(this.extraService)
+    requires acc(this.balance)
+    requires low(this.extraService)
+    ensures acc(this.extraService)
+    ensures acc(this.balance)
+    ensures low(this.extraService)
+{
+    // Precise declassification; the amount itself is still secret
+    declassify amount >= 10000
+    if (amount >= 10000) {
+        this.extraService := true
+    }else{
+        this.extraService := false
+    }
+    this.balance := amount
+}
+

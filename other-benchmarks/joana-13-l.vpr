@@ -1,0 +1,21 @@
+// Example from "A new algorithm for low-deterministic security"
+// D. Giffhorn and G. Snelting
+// International Journal of Information Security, 2015
+// Figure 13, left
+
+method inputPIN() returns (res: Int)
+
+method main() returns (l: Int)
+    ensures low(l)
+{
+    var h: Int
+    h := inputPIN()
+    // High branch, but identical assignment and therefore legal.
+    // Semantic reasoning required.
+    if (h < 0) {
+        l := 0
+    }else{
+        l := 0
+    }
+}
+

@@ -1,0 +1,30 @@
+// Example from "A new algorithm for low-deterministic security"
+// D. Giffhorn and G. Snelting
+// International Journal of Information Security, 2015
+// Figure 2, bottom left
+
+method print(val: Int)
+    requires low(val)
+    requires lowEvent
+
+
+method f(x: Int) returns (res: Int)
+    // level of result depends on level of input
+    ensures low(x) ==> low(res)
+{
+    res := x + 42
+}
+
+
+method main(h: Int)
+    requires lowEvent
+{
+    var l: Int := 2
+    var x: Int
+    var y: Int
+    x := f(h)
+    y := f(l)
+    // x is high, y is known to be low
+    print(y)
+}
+

@@ -1,0 +1,32 @@
+// Example from "A Separation Logic for Enforcing Declarative Information Flow Control Policies"
+// D. Costanzo and Z. Shao
+// POST 2014
+
+method print(val: Int)
+    requires low(val)
+    requires lowEvent
+
+method main(A: Seq[Int])
+    requires |A| == 64
+    requires lowEvent
+    // For all entries in A, it is low if they are zero or not; 
+    // if they are not, the value is high
+    requires forall i: Int :: i >= 0 && i < |A| ==> (low(A[i] == 0))
+{
+    var i: Int
+    i := 0
+    while (i < 64)
+        invariant i >= 0 && i <= 64
+        invariant low(i)
+    {
+        var x: Int := A[i]
+        if (x == 0){
+            // printing this is legal
+            print(i)
+        }else{
+
+        }
+        i := i + 1
+    }
+}
+

@@ -1,0 +1,301 @@
+pytest -s src/nagini_translation/tests.py --functional-product --silicon
+Unrecognized test set.
+============================================================================== test session starts ==============================================================================
+platform linux -- Python 3.8.5, pytest-4.3.0, py-1.10.0, pluggy-0.13.1
+benchmark: 3.4.1 (defaults: timer=time.perf_counter disable_gc=False min_rounds=5 min_time=0.000005 max_time=1.0 calibration_precision=10 warmup=False warmup_iterations=100000)
+rootdir: /home/artifact/nagini, inifile:
+plugins: benchmark-3.4.1
+collected 266 items                                                                                                                                                             
+
+src/nagini_translation/tests.py SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/home/artifact/nagini/src/nagini_translation/resources/backends/silicon.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/home/artifact/nagini/src/nagini_translation/resources/backends/carbon.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+22:42:04,061 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback-test.xml]
+22:42:04,062 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback.groovy]
+22:42:04,070 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Found resource [logback.xml] at [jar:file:/home/artifact/nagini/src/nagini_translation/resources/backends/silicon.jar!/logback.xml]
+22:42:04,070 |-WARN in ch.qos.logback.classic.LoggerContext[default] - Resource [logback.xml] occurs multiple times on the classpath.
+22:42:04,070 |-WARN in ch.qos.logback.classic.LoggerContext[default] - Resource [logback.xml] occurs at [jar:file:/home/artifact/nagini/src/nagini_translation/resources/backends/silicon.jar!/logback.xml]
+22:42:04,070 |-WARN in ch.qos.logback.classic.LoggerContext[default] - Resource [logback.xml] occurs at [jar:file:/home/artifact/nagini/src/nagini_translation/resources/backends/carbon.jar!/logback.xml]
+22:42:04,075 |-INFO in ch.qos.logback.core.joran.spi.ConfigurationWatchList@5d6eb90d - URL [jar:file:/home/artifact/nagini/src/nagini_translation/resources/backends/silicon.jar!/logback.xml] is not of type file
+22:42:04,193 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - debug attribute not set
+22:42:04,194 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - About to instantiate appender of type [ch.qos.logback.core.ConsoleAppender]
+22:42:04,197 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - Naming appender as [STDOUT]
+22:42:04,202 |-INFO in ch.qos.logback.core.joran.action.NestedComplexPropertyIA - Assuming default type [ch.qos.logback.classic.encoder.PatternLayoutEncoder] for [encoder] property
+22:42:04,214 |-INFO in ch.qos.logback.classic.joran.action.RootLoggerAction - Setting level of ROOT logger to INFO
+22:42:04,214 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [STDOUT] to Logger[ROOT]
+22:42:04,214 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - End of configuration.
+22:42:04,214 |-INFO in ch.qos.logback.classic.joran.JoranConfigurator@1ffb6ee8 - Registering current configuration as safe fallback point
+
+SLF4J: Actual binding is of type [ch.qos.logback.classic.util.ContextSelectorStaticBinder]
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/00_warmup.py' DURATION=14.152716398239136
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/01_warmup.py' DURATION=5.1068878173828125
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/02_warmup.py' DURATION=4.337021589279175
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/03_warmup.py' DURATION=3.96372652053833
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/empty.py' DURATION=1.77154541015625
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/examples/cav_example.py' DURATION=177.71672344207764
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/examples/iap_bst.py' DURATION=170.57515335083008
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/examples/parkinson_recell.py' DURATION=2.9938316345214844
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/examples/rosetta_qsort.py' DURATION=201.07123613357544
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/examples/test_student_enroll_preds.py' DURATION=56.00618100166321
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/issues/00001.py' DURATION=1.6033475399017334
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/issues/00003.py' DURATION=3.6962757110595703
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/issues/00005.py' DURATION=1.4278149604797363
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/issues/00007.py' DURATION=1.3942875862121582
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/issues/00008.py' DURATION=1.5607435703277588
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/issues/00010.py' DURATION=1.3161430358886719
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/issues/00015.py' DURATION=1.6923344135284424
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/issues/00016.py' DURATION=1.8225250244140625
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/issues/00017.py' DURATION=3.642749309539795
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/issues/00019.py' DURATION=2.19337797164917
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/issues/00021.py' DURATION=1.7377829551696777
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/issues/00022.py' DURATION=1.2637994289398193
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/issues/00023.py' DURATION=1.6195437908172607
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/issues/00023_2.py' DURATION=1.541701078414917
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/issues/00027.py' DURATION=1.1576743125915527
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/issues/00031.py' DURATION=2.978670835494995
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/issues/00032.py' DURATION=1.8245694637298584
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/issues/00033.py' DURATION=1.3995771408081055
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/issues/00041.py' DURATION=1.2578496932983398
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/issues/00043.py' DURATION=1.2031867504119873
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/issues/00044.py' DURATION=1.4859423637390137
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/issues/00045.py' DURATION=1.4114749431610107
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/issues/00046.py' DURATION=1.32547926902771
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/issues/00047.py' DURATION=2.04744553565979
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/issues/00048.py' DURATION=5.525493860244751
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/issues/00049.py' DURATION=3.1435928344726562
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/issues/00053.py' DURATION=1.6461784839630127
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/issues/00054.py' DURATION=1.6032097339630127
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/issues/00055.py' DURATION=1.3463191986083984
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/issues/00056.py' DURATION=2.502685070037842
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/issues/00057.py' DURATION=2.324862241744995
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/issues/00059.py' DURATION=168.43421339988708
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/issues/00071.py' DURATION=2.4393224716186523
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/issues/00112.py' DURATION=1.3772945404052734
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/issues/00115.py' DURATION=4.611018896102905
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/issues/00118.py' DURATION=2.765700340270996
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/issues/00120.py' DURATION=2.3160977363586426
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/issues/00141.py' DURATION=11.472040891647339
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_adt_1.py' DURATION=5.571929454803467
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_adt_2.py' DURATION=1.7250597476959229
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_adt_3.py' DURATION=4.374802112579346
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_assign.py' DURATION=23.01328134536743
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_behavioural_subtyping.py' DURATION=71.00646114349365
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_behavioural_subtyping_classmethod.py' DURATION=5.424891710281372
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_behavioural_subtyping_predicates.py' DURATION=2.6659390926361084
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_behavioural_subtyping_static.py' DURATION=1.6785662174224854
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_boolop.py' DURATION=8.919581651687622
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_boxing.py' DURATION=9.916109561920166
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_builtin_functions.py' DURATION=2.1514251232147217
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_builtin_globals_1.py' DURATION=1.706770420074463
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_builtin_globals_2.py' DURATION=2.0410895347595215
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_bytes.py' DURATION=2.7350592613220215
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_cast.py' DURATION=2.532484531402588
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_classmethod.py' DURATION=3.530979871749878
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_constructor.py' DURATION=2.5797317028045654
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_conversion.py' DURATION=7.693065404891968
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_default_return.py' DURATION=30.949395418167114
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_definedness.py' DURATION=1.7089052200317383
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_dict_pred.py' DURATION=7.848530530929565
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_dicts.py' DURATION=8.544038534164429
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_dynamic_field_creation.py' DURATION=4.699981451034546
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_enumerate.py' DURATION=18.264142274856567
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_exception.py' DURATION=27.67221426963806
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_exception_loop.py' DURATION=8.924854278564453
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_exists.py' DURATION=3.378610849380493
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_field_deletion.py' DURATION=2.978742837905884
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_fields.py' DURATION=5.279840707778931
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_float.py' DURATION=2.8283236026763916
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_forall.py' DURATION=9.552626609802246
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_funcs_and_methods.py' DURATION=2.9746110439300537
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_function_basics.py' DURATION=1.5299551486968994
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_generic_classes.py' DURATION=10.401685953140259
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_generic_methods.py' DURATION=11.22096037864685
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_global_definedness_1.py' DURATION=1.2710692882537842
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_global_definedness_10.py' DURATION=1.3411335945129395
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_global_definedness_11.py' DURATION=1.2341713905334473
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_global_definedness_2.py' DURATION=1.5160470008850098
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_global_definedness_3.py' DURATION=1.794264554977417
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_global_definedness_4.py' DURATION=1.931171178817749
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_global_definedness_5.py' DURATION=1.7230794429779053
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_global_definedness_6.py' DURATION=2.7041056156158447
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_global_definedness_7.py' DURATION=1.4401195049285889
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_global_definedness_8.py' DURATION=1.4227278232574463
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_global_mutable_1.py' DURATION=2.0034241676330566
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_global_mutable_2.py' DURATION=2.21557354927063
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_global_program.py' DURATION=4.1787731647491455
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_global_scopes.py' DURATION=2.80527663230896
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_global_stateful.py' DURATION=2.302947998046875
+Could not resolve expression __prim__int___box__(44) (test_global_vars.py@19.66) during the axiomatisation of function SO_MANY_GLOBAL_VARS. This typically happens if the expression is on an infeasible path, i.e. is dead code. The unresolved expression will be replaced by a fresh symbol, i.e. an arbitrary value.
+Could not resolve expression __prim__int___box__(44) (test_global_vars.py@19.66) during the axiomatisation of function SO_MANY_GLOBAL_VARS. This typically happens if the expression is on an infeasible path, i.e. is dead code. The unresolved expression will be replaced by a fresh symbol, i.e. an arbitrary value.
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_global_vars.py' DURATION=1.4911975860595703
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_havoced_types.py' DURATION=31.071219444274902
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_identity.py' DURATION=1.9895927906036377
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_import_execution.py' DURATION=6.610121965408325
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_imports.py' DURATION=2.321023941040039
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_imports_2.py' DURATION=1.4627962112426758
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_imports_cyclic.py' DURATION=1.7210683822631836
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_isinstance.py' DURATION=2.3776497840881348
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_iterator_dict.py' DURATION=71.9138514995575
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_iterator_list.py' DURATION=264.98055243492126
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_iterator_set.py' DURATION=101.33238768577576
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_let.py' DURATION=1.9663395881652832
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_list_comprehension.py' DURATION=5.98782205581665
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_list_pred.py' DURATION=5.117115259170532
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_lists.py' DURATION=11.967247247695923
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_loop_break.py' DURATION=80.73521542549133
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_loop_continue.py' DURATION=6.205498456954956
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_magic_methods.py' DURATION=1.8619954586029053
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_method_calls.py' DURATION=6.2276365756988525
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_named_args.py' DURATION=5.431637525558472
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_namespace.py' DURATION=4.628870725631714
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_operator_overloading.py' DURATION=2.569427728652954
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_operators.py' DURATION=9.179239749908447
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_optional_types.py' DURATION=5.376391649246216
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_pmultiset.py' DURATION=2.969994068145752
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_predicate.py' DURATION=4.00379753112793
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_predicate_families.py' DURATION=6.293379068374634
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_property.py' DURATION=2.576974868774414
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_pseq.py' DURATION=3.9402408599853516
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_pset.py' DURATION=1.964735984802246
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_raised_exception.py' DURATION=3.4007372856140137
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_range.py' DURATION=11.168639898300171
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_set.py' DURATION=3.2716667652130127
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_set_pred.py' DURATION=2.68873929977417
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_slicing.py' DURATION=7.126032114028931
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_starred.py' DURATION=5.794081211090088
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_static_calls.py' DURATION=11.726651906967163
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_static_class_members.py' DURATION=3.1797993183135986
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_string.py' DURATION=1.3184857368469238
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_super.py' DURATION=2.831711530685425
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_tuples.py' DURATION=5.139333009719849
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_type_aliases.py' DURATION=1.652702808380127
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_union_contracts.py' DURATION=58.61062717437744
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_union_types.py' DURATION=4.142394542694092
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_varargs.py' DURATION=7.568323135375977
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_while.py' DURATION=5.534728288650513
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_wildcard_permissions.py' DURATION=3.6158251762390137
+.Test 'src/nagini_translation/tests.py::test_verification[tests/functional/verification/test_with.py' DURATION=10.751267910003662
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/issues/00001.py' DURATION=0.9540603160858154
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/issues/00002.py' DURATION=0.9293057918548584
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/issues/00009.py' DURATION=0.5964741706848145
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/issues/00011.py' DURATION=0.582434892654419
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/issues/00012.py' DURATION=0.4369323253631592
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/issues/00013.py' DURATION=0.609717607498169
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/issues/00014.py' DURATION=0.4308774471282959
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/issues/00018.py' DURATION=0.5818383693695068
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/issues/00020.py' DURATION=1.3801765441894531
+sTest 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/issues/00024.py' DURATION=0.00023436546325683594
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/issues/00025.py' DURATION=0.6272425651550293
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/issues/00029.py' DURATION=0.8882880210876465
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/issues/00034.py' DURATION=0.9041061401367188
+sTest 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/issues/00039.py' DURATION=0.00027489662170410156
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/issues/00060.py' DURATION=0.6065549850463867
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/issues/00111.py' DURATION=0.5895602703094482
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/issues/00117.py' DURATION=0.7888946533203125
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/issues/00124.py' DURATION=1.1589653491973877
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/issues/00127.py' DURATION=0.7120230197906494
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/issues/00142_1.py' DURATION=0.6640944480895996
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/issues/00142_2.py' DURATION=0.6172709465026855
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_acc_1.py' DURATION=0.5945005416870117
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_acc_2.py' DURATION=0.6278996467590332
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_acc_3.py' DURATION=0.5867278575897217
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_acc_4.py' DURATION=0.5920515060424805
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_acc_5.py' DURATION=0.607213020324707
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_adt_1.py' DURATION=0.9114329814910889
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_adt_2.py' DURATION=1.322439432144165
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_adt_3.py' DURATION=0.45307207107543945
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_adt_4.py' DURATION=0.49069905281066895
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_adt_5.py' DURATION=0.439558744430542
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_adt_6.py' DURATION=0.4518742561340332
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_adt_7.py' DURATION=0.44801950454711914
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_adt_8.py' DURATION=0.43686366081237793
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_adt_9.py' DURATION=0.6226561069488525
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_behavioural_subtyping_1.py' DURATION=0.8500351905822754
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_behavioural_subtyping_10.py' DURATION=1.0922956466674805
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_behavioural_subtyping_11.py' DURATION=0.6556012630462646
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_behavioural_subtyping_13.py' DURATION=0.90897536277771
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_behavioural_subtyping_14.py' DURATION=0.6701512336730957
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_behavioural_subtyping_15.py' DURATION=0.5745499134063721
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_behavioural_subtyping_2.py' DURATION=0.900305986404419
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_behavioural_subtyping_3.py' DURATION=1.352543592453003
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_behavioural_subtyping_4.py' DURATION=0.9364771842956543
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_behavioural_subtyping_5.py' DURATION=0.6741476058959961
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_behavioural_subtyping_6.py' DURATION=0.6198136806488037
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_behavioural_subtyping_7.py' DURATION=0.6168901920318604
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_behavioural_subtyping_8.py' DURATION=0.650742769241333
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_behavioural_subtyping_9.py' DURATION=0.5975117683410645
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_continue.py' DURATION=0.6018509864807129
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_contract_1.py' DURATION=0.9756097793579102
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_contract_2.py' DURATION=0.616626501083374
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_contract_3.py' DURATION=0.6257531642913818
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_dead_code_1.py' DURATION=0.4906883239746094
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_dead_code_2.py' DURATION=0.608365535736084
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_exception_1.py' DURATION=0.5977635383605957
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_exception_2.py' DURATION=0.44207215309143066
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_exception_3.py' DURATION=0.455798864364624
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_exception_4.py' DURATION=0.42382121086120605
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_exception_5.py' DURATION=0.4242861270904541
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_exception_6.py' DURATION=1.417802333831787
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_fields.py' DURATION=0.6464107036590576
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_fold.py' DURATION=0.6419658660888672
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_generic_class_1.py' DURATION=0.6129124164581299
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_import_1.py' DURATION=0.59554123878479
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_import_2.py' DURATION=0.6348412036895752
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_impure_1.py' DURATION=0.5958998203277588
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_impure_2.py' DURATION=0.5941729545593262
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_impure_3.py' DURATION=1.1432843208312988
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_impure_4.py' DURATION=0.6257479190826416
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_impure_5.py' DURATION=0.6167032718658447
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_iterators_1.py' DURATION=0.6750171184539795
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_let_1.py' DURATION=0.619117021560669
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_list_comprehension_1.py' DURATION=0.62432861328125
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_loop_1.py' DURATION=0.6943786144256592
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_magic_method_1.py' DURATION=0.44545435905456543
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_may_create_1.py' DURATION=0.5995218753814697
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_may_create_2.py' DURATION=0.5949447154998779
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_may_set_1.py' DURATION=1.2099995613098145
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_may_set_2.py' DURATION=0.6262316703796387
+sTest 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_missing_function_1.py' DURATION=0.0003237724304199219
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_missing_method_1.py' DURATION=0.9320976734161377
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_missing_predicate_1.py' DURATION=0.9108633995056152
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_missing_return_1.py' DURATION=0.6199545860290527
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_multi_assign_1.py' DURATION=0.8906457424163818
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_mypy_superclass.py' DURATION=1.1572606563568115
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_named_args_1.py' DURATION=0.9307105541229248
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_nested_1.py' DURATION=0.5087196826934814
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_nested_2.py' DURATION=0.4593925476074219
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_optional_types_1.py' DURATION=0.9057385921478271
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_predicate_1.py' DURATION=0.646350622177124
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_predicate_2.py' DURATION=0.5937652587890625
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_predicate_3.py' DURATION=0.604076623916626
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_predicate_4.py' DURATION=1.2613427639007568
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_property_1.py' DURATION=0.9907932281494141
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_purity_1.py' DURATION=0.6734247207641602
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_purity_2.py' DURATION=0.6141493320465088
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_result.py' DURATION=0.6220905780792236
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_static_call_1.py' DURATION=0.6511735916137695
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_super_1.py' DURATION=0.8721475601196289
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_super_2.py' DURATION=1.4993619918823242
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_super_3.py' DURATION=0.929579496383667
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_super_4.py' DURATION=0.9299378395080566
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_thread_1.py' DURATION=0.6780717372894287
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_thread_2.py' DURATION=0.6143777370452881
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_thread_3.py' DURATION=0.6043953895568848
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_thread_4.py' DURATION=1.1597449779510498
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_thread_5.py' DURATION=0.6586880683898926
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_thread_6.py' DURATION=0.6389720439910889
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_thread_7.py' DURATION=0.6973679065704346
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_thread_8.py' DURATION=0.6371455192565918
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_thread_9.py' DURATION=0.6395144462585449
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_type_aliases_1.py' DURATION=0.5124914646148682
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_type_aliases_2.py' DURATION=0.4488992691040039
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_underscore_1.py' DURATION=0.4387373924255371
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_unfold.py' DURATION=0.5869345664978027
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_unfolding_1.py' DURATION=2.029742479324341
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_unfolding_2.py' DURATION=1.0695397853851318
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_unfolding_3.py' DURATION=0.6714813709259033
+.Test 'src/nagini_translation/tests.py::test_translation[tests/functional/translation/test_union_1.py' DURATION=0.9113383293151855
+
+
+=================================================================== 263 passed, 3 skipped in 2131.32 seconds ====================================================================

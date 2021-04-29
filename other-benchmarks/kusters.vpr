@@ -1,0 +1,38 @@
+// Example from "A Hybrid Approach for Proving Noninterference of Java Programs"
+// R. Kuesters, T. Truderung, B. Beckert, D. Bruns, M. Kirsten, and M. Mohr
+// 2015 IEEE 28th Computer Security Foundations Symposium
+
+field _result: Int
+field a: Int
+
+method main(global: Ref, secret: Int)
+    requires acc(global.a)
+    requires acc(global._result)
+    requires low(global._result)
+    ensures acc(global.a)
+    ensures acc(global._result)
+    ensures low(global._result)
+{
+    global.a := 42
+    bar(secret)
+    var b: Int
+    b := foo(global, secret)
+    global._result := b
+}
+
+method foo(global: Ref, secret: Int) returns (res: Int)
+    requires acc(global.a, 1/4)
+    ensures acc(global.a, 1/4)
+    ensures low(old(global.a)) ==> low(res)
+{
+    var b: Int
+    b := global.a
+    if (secret == 0) {
+        b := b + secret
+    }
+    res := b
+}
+
+method bar(secret: Int)
+
+

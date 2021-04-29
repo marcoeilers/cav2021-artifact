@@ -1,0 +1,55 @@
+// Example from "A new algorithm for low-deterministic security"
+// D. Giffhorn and G. Snelting
+// International Journal of Information Security, 2015
+// Figure 3, bottom right
+
+method inputPIN() returns (res: Int)
+method print(val: Int)
+    requires low(val)
+    requires lowEvent
+
+method main()
+    requires lowEvent
+{
+    var x: Int
+    x := inputPIN()
+    // Each loop leaks one bit about x
+    while (x == 0) // Fails to verify, termination condition is high
+        terminates x != 0 with 0  
+    {}
+    print(0)
+    while (x == 1) // Ditto.
+        terminates x != 1 with 0
+    {}
+    print(0)
+    while (x == 2) // Ditto
+        terminates x != 2 with 0
+    {}
+    print(0)
+    // and so on
+}
+
+// legal version with declassification
+method main_fixed()
+    requires lowEvent
+{
+    var x: Int
+    x := inputPIN()
+    declassify x == 0
+    while (x == 0)
+        terminates x != 0 with 0
+    {}
+    print(0)
+    declassify x == 1
+    while (x == 1)
+        terminates x != 1 with 0
+    {}
+    print(0)
+    declassify x == 2
+    while (x == 2)
+        terminates x != 2 with 0
+    {}
+    print(0)
+    // and so on
+}
+
